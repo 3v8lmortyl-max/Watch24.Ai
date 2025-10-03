@@ -1,237 +1,511 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <meta name="description" content="Watch 24.Ai provides 24/7 surveillance and monitoring solutions for retail security and operational efficiency.">
   <title>Watch 24.Ai</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+
   <style>
-    body {
-      font-family: 'Poppins', sans-serif;
-      margin: 0;
-      background: #000;
-      color: #fff;
+    :root{
+      --primary: #2196f3;
+      --accent: #18d5ff;
+      --dark: #0f1114;
+      --glass: rgba(33,150,243,0.09);
+      --muted: #cfeeff;
     }
-    header {
-      background: #111;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 10px 20px;
-      position: sticky;
-      top: 0;
-      z-index: 100;
+    *{box-sizing:border-box}
+    body{margin:0;font-family:"Segoe UI",Arial,sans-serif;background:var(--dark);color:#fff;-webkit-font-smoothing:antialiased;}
+    a{color:inherit;text-decoration:none}
+
+    /* ---------- Header ---------- */
+    .top-bar{
+      position:fixed; top:0; left:0; right:0; height:72px; display:flex; align-items:center; justify-content:space-between;
+      background:#000; z-index:120; padding:0 14px; box-shadow:0 2px 8px rgba(0,0,0,0.6);
     }
-    header img {
-      height: 50px;
+    .top-left { display:flex; align-items:center; gap:12px; }
+    .logo-img{height:56px; width:auto; object-fit:contain}
+    .contactus-btn{
+      background: linear-gradient(93deg,var(--primary) 40%, var(--accent) 120%);
+      color:#fff; border:none; padding:10px 26px; border-radius:26px; font-weight:800; cursor:pointer;
+      box-shadow: 0 8px 20px rgba(24,213,255,0.06); transition: transform .18s ease, box-shadow .18s ease;
     }
-    .btn {
-      background: linear-gradient(90deg, #00aaff, #0088ff);
-      padding: 10px 20px;
-      border-radius: 8px;
-      text-decoration: none;
-      color: #fff;
-      font-weight: 600;
+    .contactus-btn:active{transform:translateY(1px)}
+
+    /* ---------- Layout ---------- */
+    .content{max-width:520px;margin:0 auto;padding:96px 14px 48px;}
+    .glass-box{
+      background: linear-gradient(117deg,#153158de 30%, #2875bf 120%);
+      border-radius:14px;padding:20px;margin-bottom:20px;
+      box-shadow:0 12px 30px var(--glass); border:1px solid rgba(21,114,185,0.08);
+      transform: translateY(12px); opacity:0; transition: transform .55s cubic-bezier(.2,.9,.3,1), opacity .55s;
     }
-    section {
-      padding: 40px 20px;
+    .glass-box.revealed{transform:none;opacity:1}
+    .super-title { color:var(--accent); font-weight:700; letter-spacing:.12em; font-size:.95rem; display:flex;align-items:center;gap:10px;}
+    .blinking-dot{width:14px;height:14px;border-radius:50%;background:var(--primary);box-shadow:0 0 10px rgba(24,213,255,.95);animation:blink 1.2s infinite}
+    @keyframes blink{0%{opacity:1;transform:scale(1)}50%{opacity:.2;transform:scale(.86)}100%{opacity:1;transform:scale(1)}}
+    .main-title{font-size:1.3rem;margin:12px 0;font-weight:800}
+    .subtitle{color:var(--accent);font-weight:700;margin-bottom:8px}
+    .glass-box p{color:#e3fafe;line-height:1.5;margin:0}
+
+    .secure-heading{color:var(--accent);text-align:center;margin:28px 0 14px;font-weight:700;letter-spacing:.12em}
+
+    /* ---------- Services grid ---------- */
+    .services-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:14px}
+    .service-card{
+      background:#000;border-radius:12px;padding:12px 10px 16px;text-align:left;
+      box-shadow:0 4px 18px rgba(0,0,0,0.5); border:1px solid rgba(255,255,255,0.03);
+      transform: translateY(12px); opacity:0; transition: transform .55s, opacity .55s;
     }
-    .card {
-      background: #111;
-      border-radius: 12px;
-      padding: 20px;
-      margin-bottom: 20px;
-      transition: transform .3s ease, opacity .3s ease;
+    .service-card.revealed{transform:none;opacity:1}
+    .service-img{width:100%;height:120px;object-fit:cover;border-radius:8px;margin-bottom:8px;background:#222}
+    .service-label{color:var(--primary);font-weight:700;margin:6px 0}
+    .service-desc{color:#cfeeff;font-size:.94rem;line-height:1.35;margin:0}
+    .read-more-btn{margin-top:10px;background:transparent;border:1px solid rgba(24,213,255,0.14);color:var(--accent);padding:8px 12px;border-radius:8px;cursor:pointer;font-weight:700}
+
+    /* ---------- Benefits ---------- */
+    .benefits-cards{display:grid;gap:16px;margin:22px 0}
+    .benefit{background:linear-gradient(110deg,#203b5b 45%, #246fa1 120%);border-radius:12px;padding:18px;text-align:center}
+    .benefit img{width:100%;max-width:420px;border-radius:10px;display:block;margin:0 auto 12px}
+    .benefit-title{color:var(--accent);font-weight:800;margin-bottom:8px}
+    .benefit-desc{color:#ddf8fe}
+
+    /* ---------- Testimonial ---------- */
+    .testimonial-section{background:linear-gradient(117deg,#183053b0 38%, #2875bf 120%);border-radius:12px;padding:22px;text-align:center;margin:20px 0}
+    .testimonial-heading{color:#fff;font-weight:800;margin-bottom:12px}
+    .testimonial-img{width:120px;height:120px;border-radius:16px;object-fit:cover;border:3px solid #b9e0ff;margin:0 auto 12px}
+    .testimonial-desc{color:#e4f3fd;line-height:1.5}
+
+    /* ---------- Footer ---------- */
+    .footer-section{background:#000;border-radius:12px;padding:18px;margin:18px 0;border:1px solid rgba(21,114,185,0.06)}
+    .footer-logo-wrap{display:flex;align-items:center;gap:10px;margin-bottom:10px}
+    .footer-logo-text{color:var(--accent);font-weight:800}
+    .footer-description{color:#dff6ff;margin-bottom:12px}
+    .footer-services-title{color:var(--accent);font-weight:800;margin:8px 0}
+    .footer-section ul{color:#a4e3ff;padding-left:18px;margin:8px 0}
+    .footer-section a{color:#98c9ff;text-decoration:none}
+    .copyright{background:#0d1a24;padding:12px;border-radius:8px;color:#bfc9d3;text-align:left;margin:6px 0;font-size:.95rem}
+
+    /* ---------- Contact side panel (slide from right) ---------- */
+    #contact-modal{position:fixed;inset:0;display:flex;justify-content:flex-end;pointer-events:none;z-index:220}
+    #contact-modal.open{pointer-events:auto}
+    .contact-panel{
+      width:100%;max-width:920px;height:100%;background:linear-gradient(117deg,#0d1a27 20%, #132a43 120%);padding:20px;border-radius:12px 0 0 12px;
+      transform:translateX(110%);transition:transform .45s cubic-bezier(.22,.9,.35,1),opacity .25s;opacity:0;box-shadow:-12px 0 40px rgba(0,0,0,0.6);
     }
-    .card img {
-      width: 100%;
-      border-radius: 10px;
-      margin-bottom: 10px;
-    }
-    .contact-form {
-      display: flex;
-      flex-direction: column;
-    }
-    .contact-form input,
-    .contact-form textarea {
-      padding: 10px;
-      margin: 8px 0;
-      border-radius: 6px;
-      border: none;
-      font-size: 15px;
-    }
-    .send-btn {
-      margin-top: 10px;
-      background: linear-gradient(90deg, #00aaff, #0088ff);
-      color: #fff;
-      border: none;
-      padding: 12px;
-      border-radius: 6px;
-      font-weight: 600;
-      cursor: pointer;
-    }
-    footer {
-      text-align: center;
-      padding: 15px;
-      background: #111;
-      font-size: 14px;
+    #contact-modal.open .contact-panel{transform:translateX(0);opacity:1}
+    .contact-close{position:absolute;right:22px;top:18px;background:transparent;border:1px solid rgba(255,255,255,0.06);color:#fff;border-radius:8px;height:36px;width:36px;font-size:18px;cursor:pointer}
+    .contact-header{height:140px;background:linear-gradient(117deg,#153158de 38%, #2875bf 120%);border-radius:8px;display:flex;flex-direction:column;justify-content:center;align-items:center;color:#fff;margin-bottom:14px}
+    .contact-us-title{font-size:1.9rem;font-weight:800}
+    .contact-body{display:flex;gap:18px;flex-wrap:wrap}
+    .contact-info{flex:1 1 240px;display:flex;flex-direction:column;gap:12px}
+    .info-block{background:#0f1720;padding:12px;border-radius:8px;color:#cfeeff}
+    .contact-form{flex:1 1 420px;display:flex;flex-direction:column;gap:12px}
+    .form-group input,.form-group textarea{width:100%;padding:12px;border-radius:8px;border:1px solid #263246;background:#101316;color:#fff;outline:none}
+    .form-row{display:flex;gap:10px}
+    .form-row .form-group{flex:1}
+    .send-btn{background:linear-gradient(93deg,var(--primary),var(--accent));border:none;padding:12px;border-radius:8px;color:#fff;font-weight:800;cursor:pointer}
+
+    /* ---------- Service detail modal ---------- */
+    #service-detail-modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.8);z-index:260;align-items:center;justify-content:center;padding:16px}
+    .service-detail-card{width:94%;max-width:760px;background:linear-gradient(117deg,#0d1a27 20%, #132a43 120%);border-radius:12px;padding:18px;color:#dff6ff;max-height:92vh;overflow:auto}
+    .service-detail-header{display:flex;justify-content:space-between;align-items:center}
+    .service-detail-close{background:transparent;border:1px solid rgba(255,255,255,0.06);color:#fff;border-radius:8px;height:36px;width:36px;cursor:pointer}
+
+    /* ---------- Responsive tweaks ---------- */
+    @media (max-width:720px){
+      .content{padding-top:84px}
+      .service-img{height:140px}
+      .contact-panel{max-width:520px;border-radius:0}
+      .contact-body{flex-direction:column}
     }
   </style>
 </head>
 <body>
 
   <!-- Header -->
-  <header>
-    <img src="Images/IMG_20251003_212552.png" alt="Watch 24.Ai Logo">
-    <a href="#contact" class="btn">Contact Us</a>
+  <header class="top-bar" role="banner">
+    <div class="top-left" style="align-items:center">
+      <!-- Logo file — exact name must exist in images/ folder -->
+      <img src="images/IMG_20251003_212552.png" alt="Watch 24.Ai logo" class="logo-img">
+    </div>
+    <button id="header-contact-btn" class="contactus-btn" aria-controls="contact-modal" aria-expanded="false">Contact Us</button>
   </header>
 
-  <!-- Hero Section -->
-  <section class="card">
-    <h3 style="color:#00aaff">🔵 WELCOME TO WATCH 24.AI</h3>
-    <h1>MONITORING THAT NEVER SLEEPS</h1>
-    <h2 style="color:#00aaff;">RELIABILITY & SECURITY</h2>
-    <p>
-      Welcome to Watch 24.Ai — where precision meets protection. We deliver round-the-clock 
-      monitoring with hourly updates to keep your business safe and efficient. 
-      From customer activity and staff performance to theft prevention and store operations, 
-      our 24/7 advanced reporting ensures you stay informed, secure, and in control.
-    </p>
-  </section>
-
-  <!-- What We Secure -->
-  <section>
-    <h2 style="text-align:center; color:#00aaff;">WHAT WE SECURE</h2>
-
-    <div class="card">
-      <img src="Images/IMG_20251001_161137.png" alt="Monitoring">
-      <h3>MONITORING</h3>
-      <p>24/7 oversight of your retail space using CCTV + AI technology to detect anomalies and ensure safety.</p>
-    </div>
-
-    <div class="card">
-      <img src="Images/IMG_20251003_152239 (1) (1).png" alt="Theft prevention">
-      <h3>THEFT PREVENTION</h3>
-      <p>Real-time alerts and AI-driven analysis to identify and stop theft before it escalates.</p>
-    </div>
-
-    <div class="card">
-      <img src="Images/IMG_20251002_212249 (1).png" alt="Sales employee monitor">
-      <h3>EMPLOYEE / SALES MONITOR</h3>
-      <p>Track employee performance and sales interactions to optimize operations and improve quality.</p>
-    </div>
-
-    <div class="card">
-      <img src="Images/IMG_20251002_212235 (1).png" alt="Timely Alerts">
-      <h3>TIMELY ALERTS</h3>
-      <p>Instant notifications for unauthorized access or suspicious activity for rapid response.</p>
-    </div>
-
-    <div class="card">
-      <img src="Images/IMG_20251002_212210.png" alt="POS integration">
-      <h3>POS INTEGRATION</h3>
-      <p>Seamlessly integrate monitoring with your POS system for data-driven insights and efficiency.</p>
-    </div>
-
-    <div class="card">
-      <img src="Images/IMG_20251002_212149 (1).png" alt="Custom monitoring">
-      <h3>CUSTOM MONITORING</h3>
-      <p>Tailored monitoring services to suit your business needs with smart AI-driven solutions.</p>
-    </div>
-
-    <div class="card">
-      <img src="Images/IMG_20251003_152803 (1).png" alt="Custom logs">
-      <h3>CUSTOM LOGS</h3>
-      <p>Track visitors and purchase logs with accuracy, boosting both security and efficiency.</p>
-    </div>
-
-    <div class="card">
-      <img src="Images/IMG_20251003_160711 (1).png" alt="Shoplifting prevention">
-      <h3>SHOPLIFTING PREVENTION</h3>
-      <p>Advanced AI detects unusual activity and alerts instantly to stop shoplifting.</p>
-    </div>
-  </section>
-
-  <!-- About -->
-  <section class="card" id="about">
-    <h2>ABOUT US</h2>
-    <p>
-      At Watch 24.Ai we believe peace of mind is the foundation of every successful business.
-      Our mission is to protect what matters most — your people, assets and growth — with advanced surveillance
-      and monitoring solutions tailored to your needs. By combining smart technology with 24/7 vigilance,
-      we minimize risks, enhance efficiency, and keep your operations running smoothly.
-    </p>
-  </section>
-
-  <!-- Testimonials -->
-  <section class="card" id="testimonials">
-    <h2>TESTIMONIALS</h2>
-    <div style="display:flex;gap:14px;align-items:center;flex-wrap:wrap">
-      <img src="Images/IMG_20250930_184129.png" alt="Himalay Agarwal" style="width:120px;height:120px;border-radius:12px;object-fit:cover;border:3px solid #18d5ff">
-      <div>
-        <strong style="display:block;font-size:1.05rem;margin-bottom:6px">Top-Notch Security & Efficiency!</strong>
-        <div style="color:#9fbfd0;margin-bottom:8px">— Himalay Agarwal, Retail business owner</div>
-        <div style="color:#ffd966">★★★★★</div>
-        <p style="margin-top:8px;color:#dff7ff">
-          "Watch 24.Ai has completely changed the way we handle security in our retail stores.
-          Their smart monitoring system helps us prevent theft and streamline operations."
-        </p>
+  <!-- Main content -->
+  <main class="content" role="main">
+    <!-- Welcome glass -->
+    <section class="glass-box" id="welcome">
+      <div style="display:flex;align-items:center;gap:12px">
+        <span class="blinking-dot" aria-hidden="true"></span>
+        <div class="super-title">WELCOME TO WATCH 24.AI</div>
       </div>
-    </div>
-  </section>
+      <h1 class="main-title">MONITORING THAT<br>NEVER SLEEPS</h1>
+      <h2 class="subtitle">RELIABILITY & SECURITY</h2>
+      <p>Welcome to Watch 24.Ai, where precision meets protection. We deliver round-the-clock monitoring with hourly updates to keep your business safe and efficient. From customer activity and staff performance to theft prevention and store operations, our 24/7 advanced reporting ensures you stay informed, secure, and in control.</p>
+    </section>
 
-  <!-- Contact -->
-  <section id="contact" class="card">
-    <h2>CONTACT</h2>
-    <p>Use the form to send us a message or use WhatsApp to contact instantly.</p>
+    <h2 class="secure-heading">WHAT WE SECURE</h2>
 
-    <form id="site-contact-form" class="contact-form" style="max-width:720px">
-      <input id="name" name="name" type="text" placeholder="Your Name" required>
-      <input id="company" name="company" type="text" placeholder="Company / Business (optional)">
-      <input id="phone" name="phone" type="tel" placeholder="Contact Number (required)" required>
-      <input id="email" name="email" type="email" placeholder="Your Email (required)" required>
-      <textarea id="message" name="message" rows="4" placeholder="Your Message (optional)"></textarea>
-      <div style="display:flex;gap:10px;flex-wrap:wrap">
-        <button type="button" id="send-whatsapp" class="send-btn">Send via WhatsApp</button>
-        <button type="button" id="send-mail" class="send-btn" style="background:#1b2833">Open Mail Client</button>
-      </div>
-    </form>
-  </section>
+    <!-- Services grid -->
+    <section class="services-grid" aria-labelledby="services-heading">
+      <!-- MONITORING -->
+      <article class="service-card" data-title="MONITORING">
+        <img src="images/IMG_20251001_161137.png" class="service-img" alt="Monitoring">
+        <div class="service-label">MONITORING</div>
+        <p class="service-desc">Our comprehensive monitoring service offers 24/7 oversight of your retail space using state-of-the-art CCTV and AI technology to detect anomalies and ensure safety.</p>
+        <button class="read-more-btn" type="button">Read more</button>
+      </article>
+
+      <!-- THEFT PREVENTION -->
+      <article class="service-card" data-title="THEFT PREVENTION">
+        <img src="images/IMG_20251003_152239%20(1)%20(1).png" class="service-img" alt="Theft Prevention">
+        <div class="service-label">THEFT PREVENTION</div>
+        <p class="service-desc">Proactive measures to deter and prevent theft, including real-time alerts and behavioral analysis to identify potential risks before they escalate.</p>
+        <button class="read-more-btn" type="button">Read more</button>
+      </article>
+
+      <!-- SHOPLIFTING -->
+      <article class="service-card" data-title="SHOPLIFTING">
+        <img src="images/IMG_20251003_160711%20(1).png" class="service-img" alt="Shoplifting">
+        <div class="service-label">SHOPLIFTING</div>
+        <p class="service-desc">Specialized detection systems designed to spot shoplifting attempts, with immediate notifications to staff for quick intervention.</p>
+        <button class="read-more-btn" type="button">Read more</button>
+      </article>
+
+      <!-- EMPLOYEE/SALES MONITOR -->
+      <article class="service-card" data-title="EMPLOYEE/SALES MONITOR">
+        <img src="images/IMG_20251002_212249%20(1).png" class="service-img" alt="Employee Sales Monitor">
+        <div class="service-label">EMPLOYEE/SALES MONITOR</div>
+        <p class="service-desc">Track employee performance and sales interactions to optimize operations, ensure compliance, and improve customer service quality.</p>
+        <button class="read-more-btn" type="button">Read more</button>
+      </article>
+
+      <!-- TIMELY ALERTS -->
+      <article class="service-card" data-title="TIMELY ALERTS">
+        <img src="images/IMG_20251002_212235%20(1).png" class="service-img" alt="Timely Alerts">
+        <div class="service-label">TIMELY ALERTS</div>
+        <p class="service-desc">Instant notifications for critical events, such as unauthorized access or suspicious activities, allowing for rapid response.</p>
+        <button class="read-more-btn" type="button">Read more</button>
+      </article>
+
+      <!-- POS INTEGRATION -->
+      <article class="service-card" data-title="POS INTEGRATION">
+        <img src="images/IMG_20251002_212210.png" class="service-img" alt="POS Integration">
+        <div class="service-label">POS INTEGRATION</div>
+        <p class="service-desc">Seamless connection with your Point of Sale systems to correlate sales data with surveillance footage for accurate auditing and fraud prevention.</p>
+        <button class="read-more-btn" type="button">Read more</button>
+      </article>
+
+      <!-- CUSTOM MONITORING -->
+      <article class="service-card" data-title="CUSTOM MONITORING">
+        <img src="images/IMG_20251002_212149%20(1).png" class="service-img" alt="Custom Monitoring">
+        <div class="service-label">CUSTOM MONITORING</div>
+        <p class="service-desc">Tailored monitoring solutions customized to your specific business needs, ensuring flexible and scalable security coverage.</p>
+        <button class="read-more-btn" type="button">Read more</button>
+      </article>
+
+      <!-- CUSTOMER LOGS -->
+      <article class="service-card" data-title="CUSTOMER LOGS">
+        <img src="images/IMG_20251003_152803%20(1).png" class="service-img" alt="Customer Logs">
+        <div class="service-label">CUSTOMER LOGS</div>
+        <p class="service-desc">Detailed logging of customer visits and behaviors to provide insights into shopping patterns and enhance personalized marketing.</p>
+        <button class="read-more-btn" type="button">Read more</button>
+      </article>
+    </section>
+
+    <!-- Benefits -->
+    <section class="benefits-cards" aria-labelledby="benefits-heading">
+      <article class="benefit">
+        <img src="images/IMG_20250930_202049%20(1).png" alt="Live Store Opening Stream">
+        <h3 class="benefit-title">LIVE STORE OPENING STREAM</h3>
+        <p class="benefit-desc">Never miss a store opening again. Livestream your shop opening to check protocol adherence remotely, any time.</p>
+      </article>
+    </section>
+
+    <!-- ABOUT (placed before testimonials) -->
+    <section class="glass-box" id="about-us">
+      <div class="super-title">ABOUT US</div>
+      <h2 class="subtitle">Securing Your Future, Today</h2>
+      <p>At Watch 24.Ai, we believe peace of mind is the foundation of every successful business.<br><br>Our mission is to protect what matters most — your people, assets, and growth — with advanced surveillance and monitoring solutions tailored to your needs. By combining smart technology with 24/7 vigilance, we minimize risks, enhance efficiency, and keep your operations running smoothly. With us, security isn’t just a service — it’s our promise of trust, safety, and reliability.</p>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="testimonial-section" aria-labelledby="testimonials-title">
+      <div class="testimonial-heading" id="testimonials-title">OUR HAPPY CUSTOMERS</div>
+      <img src="images/IMG_20250930_184129.png" alt="Happy customer" class="testimonial-img">
+      <p class="testimonial-desc">"Watch 24.Ai has completely changed the way we handle security in our retail stores. Their smart monitoring system helps us prevent theft and streamline operations. Definitely a must-have for any retail business!"</p>
+      <div style="color:var(--muted);font-weight:700;margin-top:8px;">— Himalay Agarwal, Retail business owner</div>
+    </section>
+
+  </main>
 
   <!-- Footer -->
-  <footer>
-    <img src="Images/IMG_20251003_212552.png" alt="Logo" style="height:44px;border-radius:6px"><br>
-    <div style="margin-top:10px">Contact: <a href="tel:+919849355200" style="color:#18d5ff;text-decoration:none">+91 98493 55200</a> — Email: <a href="mailto:watch24ai@gmail.com" style="color:#18d5ff;text-decoration:none">watch24ai@gmail.com</a></div>
-    <div style="margin-top:14px;color:#9fbfd0;font-size:0.95rem">
-      © Copyright 2025 - <strong>Secure Monitoring</strong> All Rights Reserved.
+  <footer class="footer-section" role="contentinfo">
+    <div class="footer-logo-wrap">
+      <img src="images/IMG_20250930_005127%20(1).png" alt="logo" class="logo-img" style="height:44px">
+      <div>
+        <div class="footer-logo-text">Watch 24.Ai</div>
+      </div>
     </div>
+
+    <p class="footer-description">At Watch 24.Ai, we safeguard your business with advanced surveillance and smart monitoring solutions. Our focus is on providing reliable protection, real-time oversight, and operational efficiency, so you can concentrate on running your business with complete peace of mind.</p>
+
+    <h3 class="footer-services-title">OUR SERVICES</h3>
+    <ul>
+      <li>Live Streaming Opening Store</li>
+      <li>Maintaining Customer’s Logs</li>
+      <li>Activity Logs</li>
+      <li>Monitoring Sales Person</li>
+      <li>Close Store &amp; Security Alarm</li>
+    </ul>
+
+    <h3 class="footer-contact-title">CONTACT INFO</h3>
+    <p style="margin:6px 0"><span style="color:#ff6b6b">✉</span> <a href="mailto:watch24ai.contact@gmail.com">watch24ai.contact@gmail.com</a></p>
+    <p style="margin:6px 0"><span style="color:#34d399">☎</span> <a href="tel:+919849355200">+91 98493 55200</a></p>
   </footer>
 
-  <script>
-    const WA_NUMBER = '919849355200';
-    function sanitizePhone(input){ return input.replace(/[^\d+]/g, ''); }
+  <div class="copyright">© Copyright 2025 - <strong>Watch 24.Ai</strong> All Right Reserved.</div>
 
-    document.getElementById('send-whatsapp').addEventListener('click', () => {
-      const name = document.getElementById('name').value.trim();
-      const company = document.getElementById('company').value.trim();
-      const phone = sanitizePhone(document.getElementById('phone').value.trim());
-      const email = document.getElementById('email').value.trim();
-      const message = document.getElementById('message').value.trim();
-      if (!name || !phone || !email) { alert('Please fill Name, Contact Number and Email.'); return; }
-      const text = `Hello Watch 24.Ai,%0A%0AName: ${encodeURIComponent(name)}%0ACompany: ${encodeURIComponent(company||'-') }%0AContact: ${encodeURIComponent(phone)}%0AEmail: ${encodeURIComponent(email)}%0A%0AMessage: ${encodeURIComponent(message||'-')}`;
-      window.open(`https://wa.me/${WA_NUMBER}?text=${text}`, '_blank');
+  <!-- Contact sliding panel (side) -->
+  <div id="contact-modal" aria-hidden="true" role="dialog" aria-label="Contact panel">
+    <div class="contact-panel" role="document" aria-labelledby="contact-title">
+      <button class="contact-close" id="contact-close" title="Close">✕</button>
+
+      <div class="contact-header">
+        <div class="get-in-touch" style="color:var(--accent);font-weight:700;margin-bottom:4px">• GET IN TOUCH</div>
+        <div id="contact-title" class="contact-us-title">CONTACT US</div>
+      </div>
+
+      <div class="contact-body">
+        <div class="contact-info">
+          <div class="info-block">
+            <strong style="color:var(--accent)">Send a Message</strong><br>
+            <a href="mailto:watch24ai.contact@gmail.com">watch24ai.contact@gmail.com</a>
+          </div>
+          <div class="info-block">
+            <strong style="color:var(--accent)">Call Us Directly</strong><br>
+            <a href="tel:+919849355200">+91 98493 55200</a>
+          </div>
+          <div class="info-block">
+            <strong style="color:var(--accent)">WhatsApp</strong><br>
+            <a href="https://wa.me/919849355200" target="_blank" rel="noopener">+91 98493 55200</a>
+          </div>
+        </div>
+
+        <form id="enhanced-contact-form" class="contact-form" autocomplete="on" novalidate>
+          <div class="form-row">
+            <div class="form-group"><input id="field-name" name="name" type="text" placeholder="Your Name" required></div>
+            <div class="form-group"><input id="field-company" name="company" type="text" placeholder="Company / Business (optional)"></div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group"><input id="field-phone" name="phone" type="tel" placeholder="Contact Number (required)" required></div>
+            <div class="form-group"><input id="field-email" name="email" type="email" placeholder="Your Email (required)" required></div>
+          </div>
+
+          <div class="form-group"><textarea id="field-message" name="message" rows="4" placeholder="Your Message (optional)"></textarea></div>
+
+          <button type="submit" class="send-btn">SEND MESSAGE</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Service detail modal -->
+  <div id="service-detail-modal" role="dialog" aria-hidden="true">
+    <div class="service-detail-card" role="document" aria-labelledby="service-detail-title">
+      <div class="service-detail-header">
+        <div id="service-detail-title" style="color:var(--accent);font-weight:900"></div>
+        <button id="service-detail-close" class="service-detail-close" title="Close">✕</button>
+      </div>
+      <div id="service-detail-desc" style="margin-top:12px;color:#dff6ff;line-height:1.6"></div>
+      <div id="service-detail-advantages" style="margin-top:14px">
+        <h4 style="color:var(--accent)">Advantages</h4>
+        <ul id="service-advantages-list" style="color:#cfeeff"></ul>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // ---------- Config ----------
+    const WHATSAPP_NUMBER = "919849355200"; // single number as requested
+
+    // ---------- Elements ----------
+    const headerContactBtn = document.getElementById('header-contact-btn');
+    const contactModal = document.getElementById('contact-modal');
+    const contactClose = document.getElementById('contact-close');
+    const form = document.getElementById('enhanced-contact-form');
+
+    // ---------- Open / Close contact panel (side slide) ----------
+    function openContactPanel(){
+      contactModal.classList.add('open');
+      contactModal.setAttribute('aria-hidden','false');
+      headerContactBtn.setAttribute('aria-expanded','true');
+      document.body.style.overflow = 'hidden';
+      setTimeout(()=> {
+        const f = document.getElementById('field-name');
+        if(f) f.focus();
+      }, 220);
+    }
+    function closeContactPanel(){
+      contactModal.classList.remove('open');
+      contactModal.setAttribute('aria-hidden','true');
+      headerContactBtn.setAttribute('aria-expanded','false');
+      document.body.style.overflow = '';
+    }
+    headerContactBtn && headerContactBtn.addEventListener('click', openContactPanel);
+    contactClose && contactClose.addEventListener('click', closeContactPanel);
+    contactModal && contactModal.addEventListener('click', (e) => {
+      if(e.target === contactModal) closeContactPanel();
     });
 
-    document.getElementById('send-mail').addEventListener('click', () => {
-      const name = document.getElementById('name').value.trim();
-      const company = document.getElementById('company').value.trim();
-      const phone = sanitizePhone(document.getElementById('phone').value.trim());
-      const email = document.getElementById('email').value.trim();
-      const message = document.getElementById('message').value.trim();
-      if (!name || !phone || !email) { alert('Please fill Name, Contact Number and Email.'); return; }
-      const subject = encodeURIComponent('New Contact Request - Watch 24.Ai');
-      const body = encodeURIComponent(`Hello Watch 24.Ai,\n\nName: ${name}\nCompany: ${company||'-'}\nContact: ${phone}\nEmail: ${email}\n\nMessage: ${message||'-'}`);
-      window.open(`mailto:watch24ai@gmail.com?subject=${subject}&body=${body}`, '_blank');
+    // ---------- Form helpers ----------
+    function sanitizePhone(input){
+      if(!input) return '';
+      return input.replace(/[^\d+]/g,'');
+    }
+
+    form && form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const name = document.getElementById('field-name').value.trim();
+      const company = document.getElementById('field-company').value.trim();
+      const phoneRaw = document.getElementById('field-phone').value.trim();
+      const phone = sanitizePhone(phoneRaw);
+      const email = document.getElementById('field-email').value.trim();
+      const messageText = document.getElementById('field-message').value.trim();
+
+      if(!name || !phone || !email){
+        alert('Please fill Name, Contact Number and Email.');
+        return;
+      }
+
+      const plainMsg = `Hello Watch 24.Ai,
+
+I would like to contact you.
+
+Name: ${name}
+Company: ${company || '-'}
+Contact Number: ${phone}
+Email: ${email}
+
+Message: ${messageText || '-'}`;
+
+      // Open WhatsApp
+      const waUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(plainMsg)}`;
+      window.open(waUrl, '_blank');
+
+      // Prepare mailto
+      const mailtoUrl = `mailto:watch24ai.contact@gmail.com?subject=${encodeURIComponent('New Contact Request - Watch 24.Ai')}&body=${encodeURIComponent(plainMsg)}`;
+      try {
+        setTimeout(()=>{
+          const win = window.open(mailtoUrl, '_blank');
+          if(!win) window.location.href = mailtoUrl;
+        }, 200);
+      } catch(err) {
+        window.location.href = mailtoUrl;
+      }
+
+      form.reset();
+      closeContactPanel();
+    });
+
+    // ---------- Intersection reveal animation ----------
+    document.addEventListener('DOMContentLoaded', () => {
+      const ioTargets = document.querySelectorAll('.glass-box, .service-card, .benefit, .testimonial-section, .footer-section');
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if(entry.isIntersecting) entry.target.classList.add('revealed');
+        });
+      }, { threshold: 0.12 });
+      ioTargets.forEach(t => io.observe(t));
+    });
+
+    // ---------- Service detail modal (Read more) ----------
+    const serviceData = {
+      "MONITORING": {
+        longDesc: "Our Monitoring service provides continuous, AI-assisted surveillance with configurable alert levels and hourly operational updates. We combine automated analytics and human review so you get both speed and context.",
+        advantages: ["24/7 live & recorded monitoring","AI anomaly detection","Hourly operational reports","Remote footage access"]
+      },
+      "THEFT PREVENTION": {
+        longDesc: "Theft Prevention combines behavior analytics and real-time alerts to detect suspicious actions early and enable staff intervention to prevent loss.",
+        advantages: ["Behavioral analytics","Instant staff alerts","Evidence-ready exports"]
+      },
+      "SHOPLIFTING": {
+        longDesc: "Shoplifting protection integrates video event tagging and immediate notification workflows to stop incidents and preserve evidence for follow-up.",
+        advantages: ["Automated event tagging","Repeat-offender identification","Fast evidence export"]
+      },
+      "EMPLOYEE/SALES MONITOR": {
+        longDesc: "Employee/Sales monitoring improves staff performance and reduces fraud by correlating transactions with footage and evaluating SOP compliance.",
+        advantages: ["Transaction-video linking","Performance metrics","Training and compliance tools"]
+      },
+      "TIMELY ALERTS": {
+        longDesc: "Timely Alerts are fast notifications for critical events with configurable escalation paths so issues are addressed at the right level.",
+        advantages: ["Real-time notifications","Configurable escalation","Multi-channel delivery"]
+      },
+      "POS INTEGRATION": {
+        longDesc: "POS Integration links sales transactions to camera footage enabling quick reconciliation, mismatch detection and faster audits.",
+        advantages: ["Transaction correlation","Automated mismatch alerts","Faster store audits"]
+      },
+      "CUSTOM MONITORING": {
+        longDesc: "Custom Monitoring creates tailored detection rules, camera placements and reporting to meet unique business use-cases and scale across outlets.",
+        advantages: ["Custom rules & reporting","Scalable deployments","Dedicated configuration"]
+      },
+      "CUSTOMER LOGS": {
+        longDesc: "Customer Logs capture anonymized visit metrics, dwell times and flow patterns to improve staffing, layout design and inventory planning.",
+        advantages: ["Visitor counts & dwell times","Exportable logs","Privacy-aware anonymization"]
+      }
+    };
+
+    const readBtns = document.querySelectorAll('.read-more-btn');
+    const serviceModal = document.getElementById('service-detail-modal');
+    const serviceTitleEl = document.getElementById('service-detail-title');
+    const serviceDescEl = document.getElementById('service-detail-desc');
+    const serviceAdvList = document.getElementById('service-advantages-list');
+    const serviceClose = document.getElementById('service-detail-close');
+
+    function keyify(s){ return (s||'').trim().toUpperCase(); }
+
+    readBtns.forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        const card = e.currentTarget.closest('.service-card');
+        const title = (card.querySelector('.service-label')||{}).textContent || 'Service';
+        const key = keyify(title);
+        serviceTitleEl.textContent = title;
+        const data = serviceData[key];
+        serviceDescEl.textContent = data ? data.longDesc : (card.querySelector('.service-desc')||{}).textContent;
+        serviceAdvList.innerHTML = '';
+        const advs = data ? data.advantages : ['Contact us for more details'];
+        advs.forEach(a => {
+          const li = document.createElement('li');
+          li.textContent = a;
+          serviceAdvList.appendChild(li);
+        });
+        serviceModal.style.display = 'flex';
+        serviceModal.setAttribute('aria-hidden','false');
+        document.body.style.overflow = 'hidden';
+      });
+    });
+
+    serviceClose && serviceClose.addEventListener('click', () => {
+      serviceModal.style.display = 'none';
+      serviceModal.setAttribute('aria-hidden','true');
+      document.body.style.overflow = '';
+    });
+    serviceModal && serviceModal.addEventListener('click', (e) => {
+      if(e.target === serviceModal){
+        serviceModal.style.display = 'none';
+        serviceModal.setAttribute('aria-hidden','true');
+        document.body.style.overflow = '';
+      }
+    });
+
+    // allow Esc to close modals
+    window.addEventListener('keydown', (e) => {
+      if(e.key === 'Escape'){
+        if(serviceModal.style.display === 'flex'){ serviceModal.style.display = 'none'; serviceModal.setAttribute('aria-hidden','true'); document.body.style.overflow=''; }
+        if(contactModal.classList.contains('open')){ contactModal.classList.remove('open'); contactModal.setAttribute('aria-hidden','true'); document.body.style.overflow=''; }
+      }
     });
   </script>
 </body>
