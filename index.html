@@ -1,84 +1,85 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8"/>
-  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
   <meta name="description" content="Watch 24.Ai provides 24/7 surveillance and monitoring solutions for retail security and operational efficiency.">
   <title>Watch 24.Ai</title>
 
   <style>
     :root{
-      --primary: #2196f3;
-      --accent: #18d5ff;
-      --dark: #0f1114;
-      --glass: rgba(33,150,243,0.09);
-      --muted: #cfeeff;
+      --primary:#2196f3;
+      --accent:#18d5ff;
+      --dark:#0f1114;
+      --glass:rgba(33,150,243,0.09);
+      --muted:#cfeeff;
+      --surface:#000;
     }
     *{box-sizing:border-box}
-    body{margin:0;font-family:"Segoe UI",Arial,sans-serif;background:var(--dark);color:#fff;-webkit-font-smoothing:antialiased;}
+    body{margin:0;font-family:"Segoe UI",Arial,sans-serif;background:var(--dark);color:#fff;-webkit-font-smoothing:antialiased}
     a{color:inherit;text-decoration:none}
 
-    /* ---------- Header ---------- */
+    /* Header */
     .top-bar{
-      position:fixed; top:0; left:0; right:0; height:72px; display:flex; align-items:center; justify-content:space-between;
-      background:#000; z-index:120; padding:0 14px; box-shadow:0 2px 8px rgba(0,0,0,0.6);
+      position:fixed;top:0;left:0;right:0;height:86px;display:flex;align-items:center;justify-content:space-between;
+      padding:8px 16px;background:var(--surface);z-index:200;box-shadow:0 3px 12px rgba(0,0,0,0.6)
     }
-    .top-left { display:flex; align-items:center; gap:12px; }
-    .logo-img{height:56px; width:auto; object-fit:contain}
+    .logo-wrap{display:flex;align-items:center;gap:12px}
+    .logo-img{height:72px; width:auto; object-fit:contain}
     .contactus-btn{
-      background: linear-gradient(93deg,var(--primary) 40%, var(--accent) 120%);
-      color:#fff; border:none; padding:10px 26px; border-radius:26px; font-weight:800; cursor:pointer;
-      box-shadow: 0 8px 20px rgba(24,213,255,0.06); transition: transform .18s ease, box-shadow .18s ease;
+      background:linear-gradient(93deg,var(--primary) 40%,var(--accent) 120%);
+      color:#fff;border:none;padding:12px 28px;border-radius:28px;font-weight:800;cursor:pointer;
+      box-shadow:0 10px 22px rgba(24,213,255,0.08);transition:transform .16s ease
     }
     .contactus-btn:active{transform:translateY(1px)}
 
-    /* ---------- Layout ---------- */
-    .content{max-width:520px;margin:0 auto;padding:96px 14px 48px;}
+    /* page container */
+    .content{max-width:520px;margin:0 auto;padding:110px 14px 70px}
+
+    /* hero glass */
     .glass-box{
-      background: linear-gradient(117deg,#153158de 30%, #2875bf 120%);
-      border-radius:14px;padding:20px;margin-bottom:20px;
-      box-shadow:0 12px 30px var(--glass); border:1px solid rgba(21,114,185,0.08);
-      transform: translateY(12px); opacity:0; transition: transform .55s cubic-bezier(.2,.9,.3,1), opacity .55s;
+      background:linear-gradient(117deg,#153158de 30%,#2875bf 120%);
+      border-radius:14px;padding:22px;margin-bottom:22px;box-shadow:0 12px 30px var(--glass);
+      border:1px solid rgba(21,114,185,0.08);transform:translateY(10px);opacity:0;transition:transform .55s cubic-bezier(.2,.9,.3,1),opacity .55s
     }
     .glass-box.revealed{transform:none;opacity:1}
-    .super-title { color:var(--accent); font-weight:700; letter-spacing:.12em; font-size:.95rem; display:flex;align-items:center;gap:10px;}
+    .super-title{color:var(--accent);font-weight:700;letter-spacing:.12em;display:flex;align-items:center;gap:10px}
     .blinking-dot{width:14px;height:14px;border-radius:50%;background:var(--primary);box-shadow:0 0 10px rgba(24,213,255,.95);animation:blink 1.2s infinite}
     @keyframes blink{0%{opacity:1;transform:scale(1)}50%{opacity:.2;transform:scale(.86)}100%{opacity:1;transform:scale(1)}}
-    .main-title{font-size:1.3rem;margin:12px 0;font-weight:800}
-    .subtitle{color:var(--accent);font-weight:700;margin-bottom:8px}
-    .glass-box p{color:#e3fafe;line-height:1.5;margin:0}
+    .main-title{font-size:1.6rem;margin:12px 0;font-weight:800}
+    .subtitle{color:var(--accent);font-weight:700;margin-bottom:10px}
+    .glass-box p{color:#e3fafe;line-height:1.56;margin:0}
 
-    .secure-heading{color:var(--accent);text-align:center;margin:28px 0 14px;font-weight:700;letter-spacing:.12em}
+    .secure-heading{color:var(--accent);text-align:center;margin:28px 0 14px;font-weight:800;letter-spacing:.15em;font-size:1.06rem}
 
-    /* ---------- Services grid ---------- */
+    /* services grid */
     .services-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:14px}
     .service-card{
-      background:#000;border-radius:12px;padding:12px 10px 16px;text-align:left;
-      box-shadow:0 4px 18px rgba(0,0,0,0.5); border:1px solid rgba(255,255,255,0.03);
-      transform: translateY(12px); opacity:0; transition: transform .55s, opacity .55s;
+      background:var(--surface);border-radius:14px;padding:12px 12px 16px;text-align:center;box-shadow:0 6px 18px rgba(0,0,0,0.5);
+      border:1px solid rgba(255,255,255,0.03);transform:translateY(12px);opacity:0;transition:transform .5s,opacity .5s
     }
     .service-card.revealed{transform:none;opacity:1}
-    .service-img{width:100%;height:120px;object-fit:cover;border-radius:8px;margin-bottom:8px;background:#222}
-    .service-label{color:var(--primary);font-weight:700;margin:6px 0}
-    .service-desc{color:#cfeeff;font-size:.94rem;line-height:1.35;margin:0}
-    .read-more-btn{margin-top:10px;background:transparent;border:1px solid rgba(24,213,255,0.14);color:var(--accent);padding:8px 12px;border-radius:8px;cursor:pointer;font-weight:700}
+    .service-img{width:100%;height:140px;object-fit:cover;border-radius:10px;margin-bottom:8px;background:#111}
+    .service-label{color:var(--primary);font-weight:800;margin:6px 0}
+    .service-desc{color:#cfeeff;font-size:.95rem;line-height:1.4;margin:0}
+    .read-more-btn{margin-top:10px;background:transparent;border:1px solid rgba(24,213,255,0.12);color:var(--accent);padding:8px 12px;border-radius:8px;cursor:pointer;font-weight:700}
 
-    /* ---------- Benefits ---------- */
-    .benefits-cards{display:grid;gap:16px;margin:22px 0}
-    .benefit{background:linear-gradient(110deg,#203b5b 45%, #246fa1 120%);border-radius:12px;padding:18px;text-align:center}
-    .benefit img{width:100%;max-width:420px;border-radius:10px;display:block;margin:0 auto 12px}
+    /* benefits (bigger image) */
+    .benefits-cards{display:block;margin:22px 0}
+    .benefit{background:linear-gradient(110deg,#203b5b 45%,#246fa1 120%);border-radius:12px;padding:18px;text-align:center}
+    .benefit img{width:100%;max-width:640px;border-radius:10px;display:block;margin:0 auto 12px;height:auto;object-fit:cover}
     .benefit-title{color:var(--accent);font-weight:800;margin-bottom:8px}
     .benefit-desc{color:#ddf8fe}
 
-    /* ---------- Testimonial ---------- */
-    .testimonial-section{background:linear-gradient(117deg,#183053b0 38%, #2875bf 120%);border-radius:12px;padding:22px;text-align:center;margin:20px 0}
+    /* testimonial */
+    .testimonial-section{background:linear-gradient(117deg,#183053b0 38%,#2875bf 120%);border-radius:12px;padding:22px;text-align:center;margin:20px 0}
     .testimonial-heading{color:#fff;font-weight:800;margin-bottom:12px}
     .testimonial-img{width:120px;height:120px;border-radius:16px;object-fit:cover;border:3px solid #b9e0ff;margin:0 auto 12px}
     .testimonial-desc{color:#e4f3fd;line-height:1.5}
 
-    /* ---------- Footer ---------- */
-    .footer-section{background:#000;border-radius:12px;padding:18px;margin:18px 0;border:1px solid rgba(21,114,185,0.06)}
-    .footer-logo-wrap{display:flex;align-items:center;gap:10px;margin-bottom:10px}
+    /* footer */
+    .footer-section{background:var(--surface);border-radius:12px;padding:18px;margin:18px 0;border:1px solid rgba(21,114,185,0.06)}
+    .footer-logo-wrap{display:flex;align-items:center;gap:12px;margin-bottom:10px}
     .footer-logo-text{color:var(--accent);font-weight:800}
     .footer-description{color:#dff6ff;margin-bottom:12px}
     .footer-services-title{color:var(--accent);font-weight:800;margin:8px 0}
@@ -86,17 +87,17 @@
     .footer-section a{color:#98c9ff;text-decoration:none}
     .copyright{background:#0d1a24;padding:12px;border-radius:8px;color:#bfc9d3;text-align:left;margin:6px 0;font-size:.95rem}
 
-    /* ---------- Contact side panel (slide from right) ---------- */
-    #contact-modal{position:fixed;inset:0;display:flex;justify-content:flex-end;pointer-events:none;z-index:220}
+    /* contact side-panel (slide from right) */
+    #contact-modal{position:fixed;inset:0;display:flex;justify-content:flex-end;pointer-events:none;z-index:300}
     #contact-modal.open{pointer-events:auto}
     .contact-panel{
-      width:100%;max-width:920px;height:100%;background:linear-gradient(117deg,#0d1a27 20%, #132a43 120%);padding:20px;border-radius:12px 0 0 12px;
-      transform:translateX(110%);transition:transform .45s cubic-bezier(.22,.9,.35,1),opacity .25s;opacity:0;box-shadow:-12px 0 40px rgba(0,0,0,0.6);
+      width:100%;max-width:920px;height:100%;background:linear-gradient(117deg,#0d1a27 20%,#132a43 120%);padding:20px;border-radius:12px 0 0 12px;
+      transform:translateX(110%);transition:transform .45s cubic-bezier(.22,.9,.35,1),opacity .25s;opacity:0;box-shadow:-12px 0 40px rgba(0,0,0,0.6)
     }
     #contact-modal.open .contact-panel{transform:translateX(0);opacity:1}
     .contact-close{position:absolute;right:22px;top:18px;background:transparent;border:1px solid rgba(255,255,255,0.06);color:#fff;border-radius:8px;height:36px;width:36px;font-size:18px;cursor:pointer}
-    .contact-header{height:140px;background:linear-gradient(117deg,#153158de 38%, #2875bf 120%);border-radius:8px;display:flex;flex-direction:column;justify-content:center;align-items:center;color:#fff;margin-bottom:14px}
-    .contact-us-title{font-size:1.9rem;font-weight:800}
+    .contact-header{height:140px;background:linear-gradient(117deg,#153158de 38%,#2875bf 120%);border-radius:8px;display:flex;flex-direction:column;justify-content:center;align-items:center;color:#fff;margin-bottom:14px}
+    .contact-us-title{font-size:1.7rem;font-weight:800}
     .contact-body{display:flex;gap:18px;flex-wrap:wrap}
     .contact-info{flex:1 1 240px;display:flex;flex-direction:column;gap:12px}
     .info-block{background:#0f1720;padding:12px;border-radius:8px;color:#cfeeff}
@@ -106,18 +107,18 @@
     .form-row .form-group{flex:1}
     .send-btn{background:linear-gradient(93deg,var(--primary),var(--accent));border:none;padding:12px;border-radius:8px;color:#fff;font-weight:800;cursor:pointer}
 
-    /* ---------- Service detail modal ---------- */
-    #service-detail-modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.8);z-index:260;align-items:center;justify-content:center;padding:16px}
-    .service-detail-card{width:94%;max-width:760px;background:linear-gradient(117deg,#0d1a27 20%, #132a43 120%);border-radius:12px;padding:18px;color:#dff6ff;max-height:92vh;overflow:auto}
+    /* service detail modal */
+    #service-detail-modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.8);z-index:360;align-items:center;justify-content:center;padding:16px}
+    .service-detail-card{width:94%;max-width:760px;background:linear-gradient(117deg,#0d1a27 20%,#132a43 120%);border-radius:12px;padding:18px;color:#dff6ff;max-height:92vh;overflow:auto}
     .service-detail-header{display:flex;justify-content:space-between;align-items:center}
     .service-detail-close{background:transparent;border:1px solid rgba(255,255,255,0.06);color:#fff;border-radius:8px;height:36px;width:36px;cursor:pointer}
 
-    /* ---------- Responsive tweaks ---------- */
     @media (max-width:720px){
-      .content{padding-top:84px}
-      .service-img{height:140px}
+      .content{padding-top:100px}
+      .service-img{height:150px}
       .contact-panel{max-width:520px;border-radius:0}
       .contact-body{flex-direction:column}
+      .logo-img{height:62px}
     }
   </style>
 </head>
@@ -125,131 +126,127 @@
 
   <!-- Header -->
   <header class="top-bar" role="banner">
-    <div class="top-left" style="align-items:center">
-      <!-- Logo file — exact name must exist in images/ folder -->
+    <div class="logo-wrap">
+      <!-- main logo file (user provided) -->
       <img src="images/IMG_20251003_212552.png" alt="Watch 24.Ai logo" class="logo-img">
     </div>
+
     <button id="header-contact-btn" class="contactus-btn" aria-controls="contact-modal" aria-expanded="false">Contact Us</button>
   </header>
 
   <!-- Main content -->
   <main class="content" role="main">
-    <!-- Welcome glass -->
+    <!-- Hero -->
     <section class="glass-box" id="welcome">
       <div style="display:flex;align-items:center;gap:12px">
         <span class="blinking-dot" aria-hidden="true"></span>
         <div class="super-title">WELCOME TO WATCH 24.AI</div>
       </div>
+
       <h1 class="main-title">MONITORING THAT<br>NEVER SLEEPS</h1>
       <h2 class="subtitle">RELIABILITY & SECURITY</h2>
-      <p>Welcome to Watch 24.Ai, where precision meets protection. We deliver round-the-clock monitoring with hourly updates to keep your business safe and efficient. From customer activity and staff performance to theft prevention and store operations, our 24/7 advanced reporting ensures you stay informed, secure, and in control.</p>
+      <p>
+        Welcome to Watch 24.Ai, where precision meets protection. We deliver round-the-clock monitoring with hourly updates to keep your business safe and efficient. From customer activity and staff performance to theft prevention and store operations, our 24/7 advanced reporting ensures you stay informed, secure, and in control.
+      </p>
     </section>
 
-    <h2 class="secure-heading">WHAT WE SECURE</h2>
+    <h2 class="secure-heading" id="services-heading">WHAT WE SECURE</h2>
 
-    <!-- Services grid -->
+    <!-- Services grid (use your original filenames under images/) -->
     <section class="services-grid" aria-labelledby="services-heading">
-      <!-- MONITORING -->
       <article class="service-card" data-title="MONITORING">
-        <img src="images/IMG_20251001_161137.png" class="service-img" alt="Monitoring">
+        <img src="images/IMG_20251001_161137.png" class="service-img" alt="Monitoring image">
         <div class="service-label">MONITORING</div>
-        <p class="service-desc">Our comprehensive monitoring service offers 24/7 oversight of your retail space using state-of-the-art CCTV and AI technology to detect anomalies and ensure safety.</p>
+        <p class="service-desc">24/7 oversight using CCTV + AI to detect anomalies and ensure safety.</p>
         <button class="read-more-btn" type="button">Read more</button>
       </article>
 
-      <!-- THEFT PREVENTION -->
       <article class="service-card" data-title="THEFT PREVENTION">
-        <img src="images/IMG_20251003_152239%20(1)%20(1).png" class="service-img" alt="Theft Prevention">
+        <img src="images/IMG_20251003_152239 (1) (1).png" class="service-img" alt="Theft prevention image">
         <div class="service-label">THEFT PREVENTION</div>
-        <p class="service-desc">Proactive measures to deter and prevent theft, including real-time alerts and behavioral analysis to identify potential risks before they escalate.</p>
+        <p class="service-desc">Real-time alerts and AI-driven analysis to identify and stop theft early.</p>
         <button class="read-more-btn" type="button">Read more</button>
       </article>
 
-      <!-- SHOPLIFTING -->
       <article class="service-card" data-title="SHOPLIFTING">
-        <img src="images/IMG_20251003_160711%20(1).png" class="service-img" alt="Shoplifting">
+        <img src="images/IMG_20251003_160711 (1).png" class="service-img" alt="Shoplifting image">
         <div class="service-label">SHOPLIFTING</div>
-        <p class="service-desc">Specialized detection systems designed to spot shoplifting attempts, with immediate notifications to staff for quick intervention.</p>
+        <p class="service-desc">Specialized detection to spot shoplifting attempts with immediate notifications.</p>
         <button class="read-more-btn" type="button">Read more</button>
       </article>
 
-      <!-- EMPLOYEE/SALES MONITOR -->
       <article class="service-card" data-title="EMPLOYEE/SALES MONITOR">
-        <img src="images/IMG_20251002_212249%20(1).png" class="service-img" alt="Employee Sales Monitor">
+        <img src="images/IMG_20251002_212249 (1).png" class="service-img" alt="Sales employee monitor image">
         <div class="service-label">EMPLOYEE/SALES MONITOR</div>
-        <p class="service-desc">Track employee performance and sales interactions to optimize operations, ensure compliance, and improve customer service quality.</p>
+        <p class="service-desc">Track staff performance and sales interactions to optimize operations and quality.</p>
         <button class="read-more-btn" type="button">Read more</button>
       </article>
 
-      <!-- TIMELY ALERTS -->
       <article class="service-card" data-title="TIMELY ALERTS">
-        <img src="images/IMG_20251002_212235%20(1).png" class="service-img" alt="Timely Alerts">
+        <img src="images/IMG_20251002_212235 (1).png" class="service-img" alt="Timely alerts image">
         <div class="service-label">TIMELY ALERTS</div>
-        <p class="service-desc">Instant notifications for critical events, such as unauthorized access or suspicious activities, allowing for rapid response.</p>
+        <p class="service-desc">Instant notifications for critical events so response is rapid and precise.</p>
         <button class="read-more-btn" type="button">Read more</button>
       </article>
 
-      <!-- POS INTEGRATION -->
       <article class="service-card" data-title="POS INTEGRATION">
-        <img src="images/IMG_20251002_212210.png" class="service-img" alt="POS Integration">
+        <img src="images/IMG_20251002_212210.png" class="service-img" alt="POS integration image">
         <div class="service-label">POS INTEGRATION</div>
-        <p class="service-desc">Seamless connection with your Point of Sale systems to correlate sales data with surveillance footage for accurate auditing and fraud prevention.</p>
+        <p class="service-desc">Correlation of sales data with footage for accurate auditing and fraud prevention.</p>
         <button class="read-more-btn" type="button">Read more</button>
       </article>
 
-      <!-- CUSTOM MONITORING -->
       <article class="service-card" data-title="CUSTOM MONITORING">
-        <img src="images/IMG_20251002_212149%20(1).png" class="service-img" alt="Custom Monitoring">
+        <img src="images/IMG_20251002_212149 (1).png" class="service-img" alt="Custom monitoring image">
         <div class="service-label">CUSTOM MONITORING</div>
-        <p class="service-desc">Tailored monitoring solutions customized to your specific business needs, ensuring flexible and scalable security coverage.</p>
+        <p class="service-desc">Tailored monitoring solutions customized to your specific business needs.</p>
         <button class="read-more-btn" type="button">Read more</button>
       </article>
 
-      <!-- CUSTOMER LOGS -->
       <article class="service-card" data-title="CUSTOMER LOGS">
-        <img src="images/IMG_20251003_152803%20(1).png" class="service-img" alt="Customer Logs">
+        <img src="images/IMG_20251003_152803 (1).png" class="service-img" alt="Customer logs image">
         <div class="service-label">CUSTOMER LOGS</div>
-        <p class="service-desc">Detailed logging of customer visits and behaviors to provide insights into shopping patterns and enhance personalized marketing.</p>
+        <p class="service-desc">Detailed logging of customer visits and behaviors to provide insights and reports.</p>
         <button class="read-more-btn" type="button">Read more</button>
       </article>
     </section>
 
-    <!-- Benefits -->
-    <section class="benefits-cards" aria-labelledby="benefits-heading">
-      <article class="benefit">
-        <img src="images/IMG_20250930_202049%20(1).png" alt="Live Store Opening Stream">
+    <!-- Benefit / Live stream -->
+    <section class="benefits-cards" aria-labelledby="benefit-heading">
+      <article class="benefit" id="benefit-heading">
+        <img src="images/IMG_20250930_202049 (1).png" alt="Live store opening stream">
         <h3 class="benefit-title">LIVE STORE OPENING STREAM</h3>
-        <p class="benefit-desc">Never miss a store opening again. Livestream your shop opening to check protocol adherence remotely, any time.</p>
+        <p class="benefit-desc">Never miss a store opening—livestream openings to verify protocol adherence remotely.</p>
       </article>
     </section>
 
-    <!-- ABOUT (placed before testimonials) -->
+    <!-- About (before testimonials) -->
     <section class="glass-box" id="about-us">
       <div class="super-title">ABOUT US</div>
       <h2 class="subtitle">Securing Your Future, Today</h2>
-      <p>At Watch 24.Ai, we believe peace of mind is the foundation of every successful business.<br><br>Our mission is to protect what matters most — your people, assets, and growth — with advanced surveillance and monitoring solutions tailored to your needs. By combining smart technology with 24/7 vigilance, we minimize risks, enhance efficiency, and keep your operations running smoothly. With us, security isn’t just a service — it’s our promise of trust, safety, and reliability.</p>
+      <p>At Watch 24.Ai, we believe peace of mind is the foundation of every successful business.<br><br>
+      Our mission is to protect what matters most — your people, assets, and growth — with advanced surveillance and monitoring solutions tailored to your needs. By combining smart technology with 24/7 vigilance, we minimize risks, enhance efficiency, and keep your operations running smoothly. With us, security isn’t just a service — it’s our promise of trust, safety, and reliability.</p>
     </section>
 
     <!-- Testimonials -->
     <section class="testimonial-section" aria-labelledby="testimonials-title">
-      <div class="testimonial-heading" id="testimonials-title">OUR HAPPY CUSTOMERS</div>
-      <img src="images/IMG_20250930_184129.png" alt="Happy customer" class="testimonial-img">
+      <div id="testimonials-title" class="testimonial-heading">OUR HAPPY CUSTOMERS</div>
+      <img src="images/IMG_20250930_184129.png" class="testimonial-img" alt="Customer">
       <p class="testimonial-desc">"Watch 24.Ai has completely changed the way we handle security in our retail stores. Their smart monitoring system helps us prevent theft and streamline operations. Definitely a must-have for any retail business!"</p>
-      <div style="color:var(--muted);font-weight:700;margin-top:8px;">— Himalay Agarwal, Retail business owner</div>
+      <div style="color:var(--muted);font-weight:700;margin-top:8px">— Himalay Agarwal, Retail business owner</div>
     </section>
-
   </main>
 
   <!-- Footer -->
   <footer class="footer-section" role="contentinfo">
     <div class="footer-logo-wrap">
-      <img src="images/IMG_20250930_005127%20(1).png" alt="logo" class="logo-img" style="height:44px">
+      <img src="images/IMG_20251003_212552.png" alt="Watch 24.Ai logo" class="logo-img" style="height:60px">
       <div>
         <div class="footer-logo-text">Watch 24.Ai</div>
       </div>
     </div>
 
-    <p class="footer-description">At Watch 24.Ai, we safeguard your business with advanced surveillance and smart monitoring solutions. Our focus is on providing reliable protection, real-time oversight, and operational efficiency, so you can concentrate on running your business with complete peace of mind.</p>
+    <p class="footer-description">At Watch 24.Ai, we safeguard your business with advanced surveillance and smart monitoring solutions.</p>
 
     <h3 class="footer-services-title">OUR SERVICES</h3>
     <ul>
@@ -265,15 +262,15 @@
     <p style="margin:6px 0"><span style="color:#34d399">☎</span> <a href="tel:+919849355200">+91 98493 55200</a></p>
   </footer>
 
-  <div class="copyright">© Copyright 2025 - <strong>Watch 24.Ai</strong> All Right Reserved.</div>
+  <div class="copyright" style="max-width:520px;margin:0 auto;padding:12px 14px">© Copyright 2025 - <strong>Watch 24.Ai</strong> All Right Reserved.</div>
 
-  <!-- Contact sliding panel (side) -->
+  <!-- Contact side panel (slide) -->
   <div id="contact-modal" aria-hidden="true" role="dialog" aria-label="Contact panel">
     <div class="contact-panel" role="document" aria-labelledby="contact-title">
       <button class="contact-close" id="contact-close" title="Close">✕</button>
 
       <div class="contact-header">
-        <div class="get-in-touch" style="color:var(--accent);font-weight:700;margin-bottom:4px">• GET IN TOUCH</div>
+        <div style="color:var(--accent);font-weight:700;margin-bottom:6px">• GET IN TOUCH</div>
         <div id="contact-title" class="contact-us-title">CONTACT US</div>
       </div>
 
@@ -283,13 +280,11 @@
             <strong style="color:var(--accent)">Send a Message</strong><br>
             <a href="mailto:watch24ai.contact@gmail.com">watch24ai.contact@gmail.com</a>
           </div>
+
           <div class="info-block">
-            <strong style="color:var(--accent)">Call Us Directly</strong><br>
-            <a href="tel:+919849355200">+91 98493 55200</a>
-          </div>
-          <div class="info-block">
-            <strong style="color:var(--accent)">WhatsApp</strong><br>
-            <a href="https://wa.me/919849355200" target="_blank" rel="noopener">+91 98493 55200</a>
+            <strong style="color:var(--accent)">Call / WhatsApp</strong><br>
+            <a href="tel:+919849355200">+91 98493 55200</a><br>
+            <a href="https://wa.me/919849355200" target="_blank" rel="noopener">WhatsApp: +91 98493 55200</a>
           </div>
         </div>
 
@@ -319,7 +314,9 @@
         <div id="service-detail-title" style="color:var(--accent);font-weight:900"></div>
         <button id="service-detail-close" class="service-detail-close" title="Close">✕</button>
       </div>
+
       <div id="service-detail-desc" style="margin-top:12px;color:#dff6ff;line-height:1.6"></div>
+
       <div id="service-detail-advantages" style="margin-top:14px">
         <h4 style="color:var(--accent)">Advantages</h4>
         <ul id="service-advantages-list" style="color:#cfeeff"></ul>
@@ -329,15 +326,17 @@
 
   <script>
     // ---------- Config ----------
-    const WHATSAPP_NUMBER = "919849355200"; // single number as requested
+    const WHATSAPP_NUMBER = "919849355200"; // no plus sign
+    const CONTACT_EMAIL = "watch24ai.contact@gmail.com";
 
     // ---------- Elements ----------
     const headerContactBtn = document.getElementById('header-contact-btn');
     const contactModal = document.getElementById('contact-modal');
+    const contactPanel = document.querySelector('.contact-panel');
     const contactClose = document.getElementById('contact-close');
     const form = document.getElementById('enhanced-contact-form');
 
-    // ---------- Open / Close contact panel (side slide) ----------
+    // Open / close contact panel
     function openContactPanel(){
       contactModal.classList.add('open');
       contactModal.setAttribute('aria-hidden','false');
@@ -354,19 +353,20 @@
       headerContactBtn.setAttribute('aria-expanded','false');
       document.body.style.overflow = '';
     }
-    headerContactBtn && headerContactBtn.addEventListener('click', openContactPanel);
-    contactClose && contactClose.addEventListener('click', closeContactPanel);
-    contactModal && contactModal.addEventListener('click', (e) => {
+    headerContactBtn.addEventListener('click', openContactPanel);
+    contactClose.addEventListener('click', closeContactPanel);
+    contactModal.addEventListener('click', (e) => {
       if(e.target === contactModal) closeContactPanel();
     });
 
-    // ---------- Form helpers ----------
+    // sanitize phone
     function sanitizePhone(input){
       if(!input) return '';
       return input.replace(/[^\d+]/g,'');
     }
 
-    form && form.addEventListener('submit', (e) => {
+    // submit handler: opens whatsapp and mailto
+    form.addEventListener('submit', (e) => {
       e.preventDefault();
       const name = document.getElementById('field-name').value.trim();
       const company = document.getElementById('field-company').value.trim();
@@ -395,22 +395,22 @@ Message: ${messageText || '-'}`;
       const waUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(plainMsg)}`;
       window.open(waUrl, '_blank');
 
-      // Prepare mailto
-      const mailtoUrl = `mailto:watch24ai.contact@gmail.com?subject=${encodeURIComponent('New Contact Request - Watch 24.Ai')}&body=${encodeURIComponent(plainMsg)}`;
+      // Open mail client
+      const mailto = `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent('New Contact Request - Watch 24.Ai')}&body=${encodeURIComponent(plainMsg)}`;
       try {
         setTimeout(()=>{
-          const win = window.open(mailtoUrl, '_blank');
-          if(!win) window.location.href = mailtoUrl;
+          const w = window.open(mailto, '_blank');
+          if(!w) window.location.href = mailto;
         }, 200);
       } catch(err) {
-        window.location.href = mailtoUrl;
+        window.location.href = mailto;
       }
 
       form.reset();
       closeContactPanel();
     });
 
-    // ---------- Intersection reveal animation ----------
+    // Intersection reveal
     document.addEventListener('DOMContentLoaded', () => {
       const ioTargets = document.querySelectorAll('.glass-box, .service-card, .benefit, .testimonial-section, .footer-section');
       const io = new IntersectionObserver((entries) => {
@@ -421,7 +421,7 @@ Message: ${messageText || '-'}`;
       ioTargets.forEach(t => io.observe(t));
     });
 
-    // ---------- Service detail modal (Read more) ----------
+    // Service detail modal
     const serviceData = {
       "MONITORING": {
         longDesc: "Our Monitoring service provides continuous, AI-assisted surveillance with configurable alert levels and hourly operational updates. We combine automated analytics and human review so you get both speed and context.",
@@ -487,12 +487,13 @@ Message: ${messageText || '-'}`;
       });
     });
 
-    serviceClose && serviceClose.addEventListener('click', () => {
+    // close service modal handlers
+    if(serviceClose) serviceClose.addEventListener('click', () => {
       serviceModal.style.display = 'none';
       serviceModal.setAttribute('aria-hidden','true');
       document.body.style.overflow = '';
     });
-    serviceModal && serviceModal.addEventListener('click', (e) => {
+    serviceModal.addEventListener('click', (e) => {
       if(e.target === serviceModal){
         serviceModal.style.display = 'none';
         serviceModal.setAttribute('aria-hidden','true');
@@ -500,11 +501,11 @@ Message: ${messageText || '-'}`;
       }
     });
 
-    // allow Esc to close modals
+    // Escape closes panels
     window.addEventListener('keydown', (e) => {
       if(e.key === 'Escape'){
         if(serviceModal.style.display === 'flex'){ serviceModal.style.display = 'none'; serviceModal.setAttribute('aria-hidden','true'); document.body.style.overflow=''; }
-        if(contactModal.classList.contains('open')){ contactModal.classList.remove('open'); contactModal.setAttribute('aria-hidden','true'); document.body.style.overflow=''; }
+        if(contactModal.classList.contains('open')){ closeContactPanel(); }
       }
     });
   </script>
