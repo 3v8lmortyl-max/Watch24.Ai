@@ -18,14 +18,12 @@
       justify-content: space-between;
       align-items: center;
       padding: 10px 20px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
     }
     header img {
       height: 50px;
-    }
-    .brand-name {
-      font-size: 22px;
-      font-weight: 600;
-      margin-left: 10px;
     }
     .btn {
       background: linear-gradient(90deg, #00aaff, #0088ff);
@@ -43,6 +41,7 @@
       border-radius: 12px;
       padding: 20px;
       margin-bottom: 20px;
+      transition: transform .3s ease, opacity .3s ease;
     }
     .card img {
       width: 100%;
@@ -83,16 +82,13 @@
 
   <!-- Header -->
   <header>
-    <div style="display:flex;align-items:center;">
-      <img src="Images/IMG_20251003_212552.png" alt="Watch 24.Ai Logo">
-      <span class="brand-name">Watch 24.Ai</span>
-    </div>
+    <img src="Images/IMG_20251003_212552.png" alt="Watch 24.Ai Logo">
     <a href="#contact" class="btn">Contact Us</a>
   </header>
 
   <!-- Hero Section -->
   <section class="card">
-    <h3>🔵 WELCOME TO WATCH 24.AI</h3>
+    <h3 style="color:#00aaff">🔵 WELCOME TO WATCH 24.AI</h3>
     <h1>MONITORING THAT NEVER SLEEPS</h1>
     <h2 style="color:#00aaff;">RELIABILITY & SECURITY</h2>
     <p>
@@ -108,7 +104,7 @@
     <h2 style="text-align:center; color:#00aaff;">WHAT WE SECURE</h2>
 
     <div class="card">
-      <img src="Images/IMG_20251001_161137.png" alt="Monitoring image">
+      <img src="Images/IMG_20251001_161137.png" alt="Monitoring">
       <h3>MONITORING</h3>
       <p>24/7 oversight of your retail space using CCTV + AI technology to detect anomalies and ensure safety.</p>
     </div>
@@ -154,8 +150,9 @@
       <h3>SHOPLIFTING PREVENTION</h3>
       <p>Advanced AI detects unusual activity and alerts instantly to stop shoplifting.</p>
     </div>
-  </section><!-- PART 2/2: About, Testimonials, Contact, Footer, and Scripts -->
-  <!-- ABOUT -->
+  </section>
+
+  <!-- About -->
   <section class="card" id="about">
     <h2>ABOUT US</h2>
     <p>
@@ -166,7 +163,7 @@
     </p>
   </section>
 
-  <!-- TESTIMONIALS -->
+  <!-- Testimonials -->
   <section class="card" id="testimonials">
     <h2>TESTIMONIALS</h2>
     <div style="display:flex;gap:14px;align-items:center;flex-wrap:wrap">
@@ -183,7 +180,7 @@
     </div>
   </section>
 
-  <!-- CONTACT (anchor for header link) -->
+  <!-- Contact -->
   <section id="contact" class="card">
     <h2>CONTACT</h2>
     <p>Use the form to send us a message or use WhatsApp to contact instantly.</p>
@@ -201,118 +198,40 @@
     </form>
   </section>
 
-  <!-- FOOTER -->
-  <footer style="background:#111;padding:20px;margin-top:18px;border-radius:10px">
-    <div style="display:flex;align-items:center;gap:12px">
-      <img src="Images/IMG_20251003_212552.png" alt="Logo" style="height:44px;border-radius:6px">
-      <div style="font-weight:700;color:#eaf6ff">Watch 24.Ai</div>
-    </div>
-
-    <div style="margin-top:12px;color:#9fbfd0">
-      <div>Contact: <a href="tel:+919849355200" style="color:#18d5ff;text-decoration:none">+91 98493 55200</a> — Email: <a href="mailto:watch24ai@gmail.com" style="color:#18d5ff;text-decoration:none">watch24ai@gmail.com</a></div>
-    </div>
-
+  <!-- Footer -->
+  <footer>
+    <img src="Images/IMG_20251003_212552.png" alt="Logo" style="height:44px;border-radius:6px"><br>
+    <div style="margin-top:10px">Contact: <a href="tel:+919849355200" style="color:#18d5ff;text-decoration:none">+91 98493 55200</a> — Email: <a href="mailto:watch24ai@gmail.com" style="color:#18d5ff;text-decoration:none">watch24ai@gmail.com</a></div>
     <div style="margin-top:14px;color:#9fbfd0;font-size:0.95rem">
-      © Copyright 2025 - <strong>Secure Monitoring</strong> All Right Reserved.
+      © Copyright 2025 - <strong>Secure Monitoring</strong> All Rights Reserved.
     </div>
   </footer>
 
-  <!-- SCRIPT SECTION -->
   <script>
-    /***** 1) Encode image paths at runtime to handle spaces/parentheses *****/
-    (function encodeImageSrcs(){
-      try {
-        const imgs = document.querySelectorAll('img');
-        imgs.forEach(img => {
-          const raw = img.getAttribute('src');
-          if (!raw) return;
-          // skip if already encoded
-          if (/%[0-9A-Fa-f]{2}/.test(raw)) return;
-          const parts = raw.split('/').map(p => encodeURIComponent(decodeURIComponent(p)));
-          const encoded = parts.join('/');
-          if (encoded !== raw) img.src = encoded;
-        });
-      } catch(e){ console.warn('encodeImageSrcs error', e); }
-    })();
-
-    /***** 2) Simple reveal-on-scroll for .card and .service-card *****/
-    (function revealOnScroll(){
-      const items = document.querySelectorAll('.service-card, .card');
-      const obs = new IntersectionObserver((entries, observer) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.style.opacity = 1;
-            entry.target.style.transform = 'translateY(0)';
-            entry.target.style.transition = 'opacity .5s ease, transform .5s cubic-bezier(.2,.9,.3,1)';
-            observer.unobserve(entry.target);
-          }
-        });
-      }, { threshold: 0.12 });
-      items.forEach(it => {
-        // start hidden
-        it.style.opacity = 0;
-        it.style.transform = 'translateY(18px)';
-        obs.observe(it);
-      });
-    })();
-
-    /***** 3) Contact buttons logic (WhatsApp + mailto) *****/
-    const WA_NUMBER = '919849355200'; // without plus: +91 98493 55200
-    function sanitizePhone(input){
-      if(!input) return '';
-      return input.replace(/[^\d+]/g, '');
-    }
+    const WA_NUMBER = '919849355200';
+    function sanitizePhone(input){ return input.replace(/[^\d+]/g, ''); }
 
     document.getElementById('send-whatsapp').addEventListener('click', () => {
       const name = document.getElementById('name').value.trim();
       const company = document.getElementById('company').value.trim();
-      const phoneRaw = document.getElementById('phone').value.trim();
-      const phone = sanitizePhone(phoneRaw);
+      const phone = sanitizePhone(document.getElementById('phone').value.trim());
       const email = document.getElementById('email').value.trim();
       const message = document.getElementById('message').value.trim();
-
-      if (!name || !phone || !email) {
-        alert('Please fill Name, Contact Number and Email.');
-        return;
-      }
-
-      const text = `Hello Watch 24.Ai,%0A%0AI would like to contact you.%0A%0AName: ${encodeURIComponent(name)}%0ACompany: ${encodeURIComponent(company || '-') }%0AContact Number: ${encodeURIComponent(phone)}%0AEmail: ${encodeURIComponent(email)}%0A%0AMessage: ${encodeURIComponent(message || '-')}`;
-      const waUrl = `https://wa.me/${WA_NUMBER}?text=${text}`;
-      window.open(waUrl, '_blank');
+      if (!name || !phone || !email) { alert('Please fill Name, Contact Number and Email.'); return; }
+      const text = `Hello Watch 24.Ai,%0A%0AName: ${encodeURIComponent(name)}%0ACompany: ${encodeURIComponent(company||'-') }%0AContact: ${encodeURIComponent(phone)}%0AEmail: ${encodeURIComponent(email)}%0A%0AMessage: ${encodeURIComponent(message||'-')}`;
+      window.open(`https://wa.me/${WA_NUMBER}?text=${text}`, '_blank');
     });
 
     document.getElementById('send-mail').addEventListener('click', () => {
       const name = document.getElementById('name').value.trim();
       const company = document.getElementById('company').value.trim();
-      const phoneRaw = document.getElementById('phone').value.trim();
-      const phone = sanitizePhone(phoneRaw);
+      const phone = sanitizePhone(document.getElementById('phone').value.trim());
       const email = document.getElementById('email').value.trim();
       const message = document.getElementById('message').value.trim();
-
-      if (!name || !phone || !email) {
-        alert('Please fill Name, Contact Number and Email.');
-        return;
-      }
-
+      if (!name || !phone || !email) { alert('Please fill Name, Contact Number and Email.'); return; }
       const subject = encodeURIComponent('New Contact Request - Watch 24.Ai');
-      const body = encodeURIComponent(`Hello Watch 24.Ai,\n\nI would like to contact you.\n\nName: ${name}\nCompany: ${company || '-'}\nContact Number: ${phone}\nEmail: ${email}\n\nMessage: ${message || '-'}`);
-      const mailto = `mailto:watch24ai@gmail.com?subject=${subject}&body=${body}`;
-      // open mailto
-      window.open(mailto, '_blank');
-    });
-
-    /***** 4) Smooth scroll for header contact anchor (if any) *****/
-    document.querySelectorAll('a[href^="#"]').forEach(a=>{
-      a.addEventListener('click', (e) => {
-        e.preventDefault();
-        const target = document.querySelector(a.getAttribute('href'));
-        if (target) target.scrollIntoView({behavior:'smooth', block:'start'});
-      });
-    });
-
-    /***** 5) Prevent accidental form submit by Enter key in Acode mobile preview *****/
-    document.getElementById('site-contact-form').addEventListener('submit', (e) => {
-      e.preventDefault();
+      const body = encodeURIComponent(`Hello Watch 24.Ai,\n\nName: ${name}\nCompany: ${company||'-'}\nContact: ${phone}\nEmail: ${email}\n\nMessage: ${message||'-'}`);
+      window.open(`mailto:watch24ai@gmail.com?subject=${subject}&body=${body}`, '_blank');
     });
   </script>
 </body>
